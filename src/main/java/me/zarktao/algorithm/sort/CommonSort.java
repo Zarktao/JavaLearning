@@ -17,4 +17,16 @@ public class CommonSort {
             a[i] = tmp;
         }
     }
+
+    public static <T extends Comparable<? super T>> void shellSort(T[] a) {
+        for (int gap = a.length / 2; gap > 0; gap /= 2) {
+            for (int i = gap; i < a.length; i++) {
+                for (int j = i - gap; j >= 0 && a[j].compareTo(a[j + gap]) > 0; j -= gap) {
+                    T tmp = a[j + gap];
+                    a[j + gap] = a[j];
+                    a[j] = tmp;
+                }
+            }
+        }
+    }
 }
