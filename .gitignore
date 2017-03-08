@@ -1,3 +1,4 @@
-JavaLearning.iml
+*.iml
 target
 .idea
+*.class
