@@ -46,4 +46,14 @@ public class TestCommonSort {
         CommonSort.mergeSort(test);
         assertTrue("MergeSort inputB test failed.", Arrays.deepEquals(test, outputB));
     }
+
+    @Test
+    public void testQuickSort() {
+        Integer[] test = inputA.clone();
+        CommonSort.quickSort(test);
+        assertTrue("QuickSort inputA test failed.", Arrays.deepEquals(test, outputA));
+        test = inputB.clone();
+        CommonSort.quickSort(test);
+        assertTrue("QuickSort inputB test failed.", Arrays.deepEquals(test, outputB));
+    }
 }

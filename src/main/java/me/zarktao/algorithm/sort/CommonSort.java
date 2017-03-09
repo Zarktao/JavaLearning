@@ -64,4 +64,28 @@ public class CommonSort {
         //数组拷贝方法是native的，效率比正常复制要高
         System.arraycopy(tmp, 0, a, re - count + 1, count);
     }
+
+    public static <T extends Comparable<? super T>> void quickSort(T[] a) {
+        quickSort(a, 0, a.length - 1);
+    }
+
+    private static <T extends Comparable<? super T>> void quickSort(T[] a, int l, int h) {
+        if (l >= h) return;
+        int low = l;
+        int high = h;
+        T tmp = a[l];
+        while (l < h) {
+            while (l < h && a[h].compareTo(tmp) >= 0) {
+                h--;
+            }
+            a[l] = a[h];
+            while (l < h && a[l].compareTo(tmp) <= 0) {
+                l++;
+            }
+            a[h] = a[l];
+        }
+        a[l] = tmp;
+        quickSort(a, low, l - 1);
+        quickSort(a, l + 1, high);
+    }
 }
