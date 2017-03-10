@@ -1,8 +1,12 @@
+# java.util.concurrent.ExecutorService.java
+
 Executor提供了：
+
 1. 管理线程的结束的方法
 2. 返回Future对象，用于监控一个或多个异步任务是否结束
 
 一个`ExecutorService`可以被关闭 *(termination)*，关闭后无法添加新的任务。提供了两种关闭的方式：
+
 1. `shutdown()`会将之前提交的任务执行完毕后再关闭`ExecutorService`
 2. `shutdownNow()`将不会执行在队列中等待的任务，并且会尝试停止现在正在运行的任务
 
