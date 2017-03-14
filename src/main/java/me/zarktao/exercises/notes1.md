@@ -73,3 +73,78 @@ double d=Math.cos(Math.toDegrees(42))
 
 ### `protected` vs `default`
 > protected可以给同一包中其他类访问，但是也可以给不在同一包的子类访问。default只能被同一包中的类访问
+
+### .java源文件中的代码
+> 一个java文件可以包含多个java类，但是只能包含一个public类，并且public类的类名必须与java文件名相同。
+
+### Java中的基本类型及空间占用
+
+|| 默认值 | 存储需求（字节）| 取值范围 | 示例 | 
+| --- | --- | --- | --- | --- |
+|byte |0|1|2^7—2^7-1 |byte b=10;|
+|char |'\u0000' |2|0—2^16-1 |char c=’c’ ; |
+|short |0|2|-2^15—2^15-1 |short s=10;| 
+|int  |0|4|-2^31—2^31-1 |int i=10; |
+|long |0|8|-2^63—2^63-1  |long o=10L;| 
+|float  | 0.0f  |4|-2^31—2^31-1 |float f=10.0F;| 
+|double  |0.0d |8|-2^63—2^63-1 |double d=10.0; |
+|boolean |false  |1|true\false |boolean flag=true;|
+
+### 静态变量可以通过对象引用
+
+### ClassLoader
+> 1. Bootstrap ClassLoader: 负责加载$JAVA_HOME中jre/lib/rt.jar里所有的class，由C++实现，不是ClassLoader子类
+> 2. Extension ClassLoader: 负责加载java平台中扩展功能的一些jar包，包括$JAVA_HOME中jre/lib/*.jar或-Djava.ext.dirs指定目录下的jar包
+> 3. App ClassLoader: 负责记载classpath中指定的jar包及目录中class
+> 4. Custom ClassLoader: 属于应用程序根据自身需要自定义的ClassLoader，如tomcat、jboss都会根据j2ee规范自行实现ClassLoader
+
+> 加载过程中会先检查类是否被已加载，检查顺序是自底向上，从Custom ClassLoader到BootStrap ClassLoader逐层检查，只要某个classloader已加载就视为已加载此类，保证此类只所有ClassLoader加载一次。而加载的顺序是自顶向下，也就是由上层来逐层尝试加载此类。
+
+### Java数值默认类型
+> 整数默认为int，小数默认为double
+
+### 优化Hibernate所鼓励的7大措施：
+> 1. 尽量使用many-to-one，避免使用单项one-to-many
+> 2. 灵活使用单向one-to-many
+> 3. 不用一对一，使用多对一代替一对一
+> 4. 配置对象缓存，不使用集合缓存
+> 5. 一对多使用Bag 多对一使用Set
+> 6. 继承使用显示多态 HQL:from object polymorphism="exlicit" 避免查处所有对象
+> 7. 消除大表，使用二级缓存
+
+### Java中的移位符号
+> * <<表示左移位
+> * \>>表示带符号右移位
+> * \>>>表示无符号右移
+> * 没有<<<
+
+### volatile
+1. 每次从内存中取值，不从缓存中什么的拿值。这就保证了用 volatile修饰的共享变量，每次的更新对于其他线程都是可见的。
+2. volatile保证了其他线程的立即可见性，就没有保证原子性。
+3. 由于有些时候对 volatile的操作，不会被保存，说明不会造成阻塞。不可用与多线程环境下的计数器。
+
+### `java.long`中不能被继承的类
+> * public final class Byte
+> * public final class Character
+> * public static final class Character.UnicodeBlock
+> * public final class Class<T>
+> * public final class Compile
+> * public final class Double
+> * public final class Float
+> * public final class Integer
+> * public final class Long
+> * public final class Math
+> * public final class ProcessBuilder
+> * public final class RuntimePermission
+> * public final class Short
+> * public final class StackTraceElement
+> * public final class StrictMath
+> * public final class String
+> * public final class StringBuffer
+> * public final class StringBuilder
+> * public final class System
+> * public final class Void
+
+
+ 
+
