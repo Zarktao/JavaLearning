@@ -26,3 +26,6 @@
 
 ## 牛客网笔试题笔记
 * [note1](src/main/java/me/zarktao/exercises/notes1.md)
+
+## 其他基础笔记
+* [网络](/src/main/java/me/zarktao/others/network.md)
