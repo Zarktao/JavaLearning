@@ -3,3 +3,6 @@ target
 .idea
 *.class
 .vscode
+.classpath
+.project
+.settings
