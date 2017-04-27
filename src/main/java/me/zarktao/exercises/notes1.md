@@ -47,7 +47,7 @@ double d=Math.cos(Math.toDegrees(42))
 > * 接口隔离原则（Interface-Segregation Principle）：使用多个小的专门的接口，而不要使用一个大的总接口
 
 ### JavaEE中的常见名词
-> * web容器：给处于其中的应用程序组件（JSP，SERVLET）提供一个环境，使 JSP,SERVLET直接更容器中的环境变量接**互，不必关注其它系统问题。主要有WEB服务器来实现。例如：TOMCAT,WEBLOGIC,WEBSPHERE等。该容器提供的接口严格遵守J2EE规范中的WEB APPLICATION 标准。我们把遵守以上标准的WEB服务器就叫做J2EE中的WEB容器。
+> * web容器：给处于其中的应用程序组件（JSP，SERVLET）提供一个环境，使 JSP,SERVLET直接更容器中的环境变量接口交互，不必关注其它系统问题。主要有WEB服务器来实现。例如：TOMCAT,WEBLOGIC,WEBSPHERE等。该容器提供的接口严格遵守J2EE规范中的WEB APPLICATION 标准。我们把遵守以上标准的WEB服务器就叫做J2EE中的WEB容器。
 > * EJB容器：Enterprise java bean 容器。更具有行业领域特色。他提供给运行在其中的组件EJB各种管理功能。只要满足J2EE规范的EJB放入该容器，马上就会被容器进行高效率的管理。并且可以通过现成的接口来获得系统级别的服务。例如邮件服务、事务管理。
 > * JNDI：（Java Naming & Directory Interface）JAVA命名目录服务。主要提供的功能是：提供一个目录系，让其它各地的应用程序在其上面留下自己的索引，从而满足快速查找和定位分布式应用程序的功能。
 > * JMS：（Java Message Service）JAVA消息服务。主要实现各个应用程序之间的通讯。包括点对点和广播。
@@ -95,7 +95,7 @@ double d=Math.cos(Math.toDegrees(42))
 ### ClassLoader
 > 1. Bootstrap ClassLoader: 负责加载$JAVA_HOME中jre/lib/rt.jar里所有的class，由C++实现，不是ClassLoader子类
 > 2. Extension ClassLoader: 负责加载java平台中扩展功能的一些jar包，包括$JAVA_HOME中jre/lib/*.jar或-Djava.ext.dirs指定目录下的jar包
-> 3. App ClassLoader: 负责记载classpath中指定的jar包及目录中class
+> 3. App ClassLoader: 负责加载classpath中指定的jar包及目录中class
 > 4. Custom ClassLoader: 属于应用程序根据自身需要自定义的ClassLoader，如tomcat、jboss都会根据j2ee规范自行实现ClassLoader
 
 > 加载过程中会先检查类是否被已加载，检查顺序是自底向上，从Custom ClassLoader到BootStrap ClassLoader逐层检查，只要某个classloader已加载就视为已加载此类，保证此类只所有ClassLoader加载一次。而加载的顺序是自顶向下，也就是由上层来逐层尝试加载此类。
@@ -119,9 +119,9 @@ double d=Math.cos(Math.toDegrees(42))
 > * 没有<<<
 
 ### volatile
-1. 每次从内存中取值，不从缓存中什么的拿值。这就保证了用 volatile修饰的共享变量，每次的更新对于其他线程都是可见的。
+1. 每次从内存中取值，不从缓存中取值。这就保证了用volatile修饰的共享变量，每次的更新对于其他线程都是可见的。
 2. volatile保证了其他线程的立即可见性，就没有保证原子性。
-3. 由于有些时候对 volatile的操作，不会被保存，说明不会造成阻塞。不可用与多线程环境下的计数器。
+3. 由于有些时候对volatile的操作，不会被保存，说明不会造成阻塞。不可用与多线程环境下的计数器。
 
 ### `java.long`中不能被继承的类
 > * public final class Byte
